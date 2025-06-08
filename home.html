@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNA Sequence Alignment - Needleman-Wunsch Algorithm</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <div class="container">
+        <h1>DNA Sequence Alignment</h1>
+        <p class="subtitle">Needleman-Wunsch Algorithm Implementation with Dynamic Programming</p>
+        
+        <div class="input-section">
+            <div class="input-group">
+                <label for="seq1">DNA Sequence 1:</label>
+                <input type="text" id="seq1" value="AGCTA" placeholder="Enter first DNA sequence (A, T, G, C)">
+            </div>
+            
+            <div class="input-group">
+                <label for="seq2">DNA Sequence 2:</label>
+                <input type="text" id="seq2" value="AGTCA" placeholder="Enter second DNA sequence (A, T, G, C)">
+            </div>
+            
+            <div class="scoring-section">
+                <div class="score-input">
+                    <label for="match">Match Score:</label>
+                    <input type="number" id="match" value="2">
+                </div>
+                <div class="score-input">
+                    <label for="mismatch">Mismatch Score:</label>
+                    <input type="number" id="mismatch" value="-1">
+                </div>
+                <div class="score-input">
+                    <label for="gap">Gap Penalty:</label>
+                    <input type="number" id="gap" value="-2">
+                </div>
+            </div>
+            
+            <button class="btn" onclick="alignSequences()">Align Sequences</button>
+            <button class="btn btn-secondary" onclick="loadExample()">Load Example</button>
+        </div>
+
+        <div id="results" class="results-section hidden">
+            <div class="step-by-step">
+                <div class="step-title">Step 1: Initialize DP Matrix</div>
+                <div id="step1-content"></div>
+            </div>
+
+            <div class="step-by-step">
+                <div class="step-title">Step 2: Fill DP Matrix</div>
+                <div id="step2-content"></div>
+            </div>
+
+            <div class="step-by-step">
+                <div class="step-title">Step 3: Traceback Path</div>
+                <div id="step3-content"></div>
+            </div>
+
+            <div class="step-by-step">
+                <div class="step-title">Final Alignment Result</div>
+                <div id="alignment-result"></div>
+            </div>
+
+            <div class="complexity-info">
+                <h3>Algorithm Complexity Analysis</h3>
+                <p><strong>Time Complexity:</strong> O(m × n) where m and n are the lengths of the sequences</p>
+                <p><strong>Space Complexity:</strong> O(m × n) for storing the DP matrix</p>
+                <p><strong>Algorithm Type:</strong> Dynamic Programming with optimal substructure</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="home.js"></script>
+</body>
+</html>
