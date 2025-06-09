@@ -1,18 +1,13 @@
-/* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Reset & Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', system-ui, sans-serif;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     padding: 20px;
 }
 
-/* Container */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -20,25 +15,63 @@ body {
     border-radius: 20px;
     padding: 30px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
 }
 
-/* Headers */
+/* Header */
 h1 {
     text-align: center;
-    color: #2c3e50;
-    margin-bottom: 10px;
     font-size: 2.5em;
     background: linear-gradient(45deg, #667eea, #764ba2);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
 }
 
 .subtitle {
     text-align: center;
     color: #7f8c8d;
     margin-bottom: 30px;
-    font-size: 1.2em;
+    font-size: 1.1em;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.tab-button {
+    padding: 15px 25px;
+    border: none;
+    background: none;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s;
+    margin: 0 5px;
+}
+
+.tab-button.active {
+    border-bottom-color: #667eea;
+    color: #667eea;
+    font-weight: 600;
+}
+
+.tab-button:hover {
+    background: rgba(102, 126, 234, 0.1);
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
 }
 
 /* Input Section */
@@ -47,22 +80,23 @@ h1 {
     padding: 25px;
     border-radius: 15px;
     margin-bottom: 30px;
-    border: 2px solid #e9ecef;
 }
 
-.input-group {
+.sequence-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     margin-bottom: 20px;
 }
 
-label {
+.input-group label {
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
     color: #2c3e50;
-    font-size: 1.1em;
 }
 
-input[type="text"] {
+.input-group input {
     width: 100%;
     padding: 12px;
     border: 2px solid #ddd;
@@ -73,156 +107,155 @@ input[type="text"] {
     transition: border-color 0.3s;
 }
 
-input[type="text"]:focus {
+.input-group input:focus {
     outline: none;
     border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-/* Scoring Section */
 .scoring-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
     margin-bottom: 20px;
 }
 
-.score-input {
-    text-align: center;
+.score-group {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 }
 
-.score-input input {
+.score-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.score-group input {
     width: 80px;
+    padding: 8px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
     text-align: center;
 }
 
-/* Buttons */
+/* Controls */
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .btn {
-    background: linear-gradient(45deg, #667eea, #764ba2);
-    color: white;
-    padding: 15px 30px;
+    padding: 12px 24px;
     border: none;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    margin-right: 10px;
+    transition: all 0.3s;
+    background: linear-gradient(45deg, #95a5a6, #7f8c8d);
+    color: white;
+}
+
+.btn.primary {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+}
+
+.btn.secondary {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
 }
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-.btn-secondary {
-    background: linear-gradient(45deg, #95a5a6, #7f8c8d);
-}
-
-/* Results Section */
-.results-section {
+/* Results */
+.results {
     margin-top: 30px;
 }
 
-.step-by-step {
-    background: #fff;
-    border: 2px solid #e9ecef;
-    border-radius: 15px;
-    padding: 25px;
+.hidden {
+    display: none;
+}
+
+.algorithm-info {
+    background: #e8f4fd;
+    padding: 20px;
+    border-radius: 10px;
     margin-bottom: 20px;
+    border-left: 5px solid #3498db;
 }
 
-.step-title {
+.algorithm-info h3 {
     color: #2c3e50;
-    font-size: 1.3em;
-    font-weight: 600;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #667eea;
+    margin-bottom: 10px;
 }
 
-/* Matrix Styles */
-.matrix-container {
-    overflow-x: auto;
-    margin: 20px 0;
+/* Matrix */
+.matrix-section {
+    margin-bottom: 30px;
 }
 
-.dp-matrix {
-    border-collapse: collapse;
+.matrix-display table {
     margin: 0 auto;
+    border-collapse: collapse;
     background: white;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.dp-matrix td, .dp-matrix th {
-    border: 1px solid #ddd;
+.matrix-display td, .matrix-display th {
     padding: 8px 12px;
+    border: 1px solid #ddd;
     text-align: center;
     font-family: 'Courier New', monospace;
     font-weight: 600;
 }
 
-.dp-matrix th {
+.matrix-display th {
     background: linear-gradient(45deg, #667eea, #764ba2);
     color: white;
-    font-weight: bold;
 }
 
-.dp-matrix .highlight {
-    background: #fff3cd;
+.matrix-display .highlight {
+    background: #fff3cd !important;
     animation: pulse 1s ease-in-out;
 }
 
-.dp-matrix .path {
-    background: #d4edda;
+.matrix-display .path {
+    background: #d4edda !important;
+    color: #155724;
+}
+
+.matrix-display .max-cell {
+    background: #f8d7da !important;
+    color: #721c24;
     font-weight: bold;
 }
 
-/* Animations */
-@keyframes pulse {
-    0% { background-color: #fff3cd; }
-    50% { background-color: #ffeaa7; }
-    100% { background-color: #fff3cd; }
-}
-
-/* Alignment Results */
-.alignment-result {
+/* Alignment Display */
+.alignment-display {
     background: #f8f9fa;
     padding: 20px;
     border-radius: 10px;
-    border-left: 5px solid #667eea;
-    margin: 20px 0;
-}
-
-.alignment-sequences {
+    margin-bottom: 20px;
     font-family: 'Courier New', monospace;
     font-size: 1.2em;
-    line-height: 1.8;
-    word-break: break-all;
+    line-height: 2;
 }
 
-.match { 
-    color: #27ae60; 
-    font-weight: bold; 
-}
+.match { color: #27ae60; font-weight: bold; }
+.mismatch { color: #e74c3c; font-weight: bold; }
+.gap { color: #f39c12; font-weight: bold; }
 
-.mismatch { 
-    color: #e74c3c; 
-    font-weight: bold; 
-}
-
-.gap { 
-    color: #f39c12; 
-    font-weight: bold; 
-}
-
-/* Statistics */
-.stats {
+/* Stats */
+.stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
 }
 
 .stat-card {
@@ -231,7 +264,7 @@ input[type="text"]:focus {
     border-radius: 10px;
     text-align: center;
     border: 2px solid #e9ecef;
-    transition: transform 0.2s;
+    transition: transform 0.3s;
 }
 
 .stat-card:hover {
@@ -240,6 +273,7 @@ input[type="text"]:focus {
 }
 
 .stat-value {
+    display: block;
     font-size: 2em;
     font-weight: bold;
     color: #667eea;
@@ -250,57 +284,118 @@ input[type="text"]:focus {
     margin-top: 5px;
 }
 
-/* Complexity Info */
-.complexity-info {
+/* Simulation */
+.simulation-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.simulation-controls label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.simulation-info {
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+    font-size: 1.1em;
+}
+
+#step-info {
     background: #e8f4fd;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border-left: 5px solid #3498db;
+}
+
+/* Comparison */
+.comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.algo-card {
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.algo-card.needleman {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.algo-card.smith {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+
+.algo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.algo-card h4 {
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.algo-details p {
+    margin-bottom: 10px;
+}
+
+.comparison-results {
+    margin-top: 30px;
+}
+
+.side-by-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.comparison-result {
+    background: white;
     padding: 20px;
     border-radius: 10px;
-    border-left: 5px solid #3498db;
-    margin-top: 20px;
+    border: 2px solid #e9ecef;
 }
 
-/* Utility Classes */
-.hidden {
-    display: none;
+/* Animations */
+@keyframes pulse {
+    0%, 100% { background-color: #fff3cd; }
+    50% { background-color: #ffeaa7; }
 }
 
-.loading {
-    text-align: center;
-    color: #667eea;
-    font-size: 1.2em;
-    padding: 20px;
+@keyframes highlight {
+    0% { background-color: transparent; }
+    50% { background-color: #fff3cd; }
+    100% { background-color: transparent; }
 }
 
-/* Responsive Design */
+.current-cell {
+    animation: highlight 1s ease-in-out;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-    .container {
-        padding: 20px;
-        margin: 10px;
-    }
-    
-    h1 {
-        font-size: 2em;
-    }
-    
-    .scoring-section {
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .btn {
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    
-    .stats {
-        grid-template-columns: 1fr;
-    }
-    
-    .dp-matrix {
-        font-size: 0.8em;
-    }
-    
-    .dp-matrix td, .dp-matrix th {
-        padding: 4px 6px;
-    }
+    .container { padding: 20px; margin: 10px; }
+    .sequence-inputs { grid-template-columns: 1fr; }
+    .comparison-grid { grid-template-columns: 1fr; }
+    .side-by-side { grid-template-columns: 1fr; }
+    .score-group { flex-direction: column; align-items: center; }
+    .controls { flex-direction: column; }
+    .tabs { flex-wrap: wrap; }
+    h1 { font-size: 2em; }
 }
