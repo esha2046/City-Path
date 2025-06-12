@@ -1,6 +1,6 @@
 // Path finding algorithms
 
-// Breadth-First Search (BFS)
+// BFS
 function bfs(graph, start, end) {
     const queue = [{ node: start, path: [start], cost: 0 }];
     const visited = new Set();
@@ -37,7 +37,7 @@ function bfs(graph, start, end) {
     return null; // No path found
 }
 
-// Depth-First Search (DFS)
+// DFS
 function dfs(graph, start, end) {
     const stack = [{ node: start, path: [start], cost: 0 }];
     const visited = new Set();
@@ -76,7 +76,7 @@ function dfs(graph, start, end) {
     return null; // No path found
 }
 
-// A* Algorithm
+// A* 
 function astar(graph, start, end) {
     const startNode = graph.getNode(start);
     const endNode = graph.getNode(end);
@@ -117,7 +117,7 @@ function astar(graph, start, end) {
             const hCost = window.heuristic(graph.getNode(to), endNode);
             const fCost = gCost + hCost;
 
-            // Check if this path to the neighbor is better
+            // Checking if this path to the neighbor is better
             const existingIndex = openSet.findIndex(item => item.node === to);
             if (existingIndex === -1) {
                 openSet.push({
@@ -142,7 +142,7 @@ function astar(graph, start, end) {
     return null; // No path found
 }
 
-// Main function to run the selected algorithm
+// Main function to choose the algo
 function findPath(graph, start, end, algorithm) {
     switch (algorithm) {
         case 'bfs':
@@ -156,7 +156,7 @@ function findPath(graph, start, end, algorithm) {
     }
 }
 
-// Export functions
+// Export func
 window.bfs = bfs;
 window.dfs = dfs;
 window.astar = astar;
