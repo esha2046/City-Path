@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Map Path Finder</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>City Map Path Finder</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="startNode">Start Location:</label>
+                <select id="startNode">
+                    <option value="A">Library (A)</option>
+                    <option value="B">Park (B)</option>
+                    <option value="C">Mall (C)</option>
+                    <option value="D">School (D)</option>
+                    <option value="E">Hospital (E)</option>
+                    <option value="F">Station (F)</option>
+                    <option value="G">Museum (G)</option>
+                    <option value="H">Airport (H)</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="endNode">End Location:</label>
+                <select id="endNode">
+                    <option value="A">Library (A)</option>
+                    <option value="B">Park (B)</option>
+                    <option value="C">Mall (C)</option>
+                    <option value="D">School (D)</option>
+                    <option value="E">Hospital (E)</option>
+                    <option value="F">Station (F)</option>
+                    <option value="G">Museum (G)</option>
+                    <option value="H" selected>Airport (H)</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="algorithm">Algorithm:</label>
+                <select id="algorithm">
+                    <option value="bfs">BFS (Breadth-First Search)</option>
+                    <option value="dfs">DFS (Depth-First Search)</option>
+                    <option value="astar">A* (A-Star)</option>
+                </select>
+            </div>
+            
+            <button id="findPath">Find Path</button>
+            <button id="clearPath">Clear Path</button>
+        </div>
+        
+        <div class="map-container">
+            <svg id="cityMap" width="800" height="600"></svg>
+        </div>
+        
+        <div class="results">
+            <div class="info-panel">
+                <h3>Results</h3>
+                <div id="pathInfo">
+                    <p>Select start and end locations, choose an algorithm, then click "Find Path"</p>
+                </div>
+            </div>
+            
+            <div class="legend">
+                <h3>Legend</h3>
+                <div class="legend-item">
+                    <div class="legend-color node"></div>
+                    <span>Locations</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color road"></div>
+                    <span>Roads</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color path"></div>
+                    <span>Optimal Path</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color start"></div>
+                    <span>Start Location</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color end"></div>
+                    <span>End Location</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="algorithm-info">
+            <h3>Algorithm Information</h3>
+            <div id="algorithmDescription">
+                <p><strong>BFS (Breadth-First Search):</strong> Explores all neighbors at the current depth before moving to nodes at the next depth. Guarantees shortest path in unweighted graphs.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="graph.js"></script>
+    <script src="algorithms.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
